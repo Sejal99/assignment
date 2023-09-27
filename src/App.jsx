@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import TodoInput from './components/TodoInput';
-import ResetButton from './components/ResetButton';
-import TodoList from './components/TodoList';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import TodoInput from "./components/TodoInput";
+import ResetButton from "./components/ResetButton";
+import TodoList from "./components/TodoList";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    
-    const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(storedTodos);
   }, []);
 
   useEffect(() => {
-   
-    if(todos.length>0){
-    localStorage.setItem('todos', JSON.stringify(todos));
+    if (todos.length > 0) {
+      localStorage.setItem("todos", JSON.stringify(todos));
     }
   }, [todos]);
 
@@ -37,10 +35,10 @@ function App() {
     );
     setTodos(updatedTodos);
   };
-
+//clear todos
   const resetTodos = () => {
     setTodos([]);
-    localStorage.clear()
+    localStorage.clear();
   };
 
   return (
